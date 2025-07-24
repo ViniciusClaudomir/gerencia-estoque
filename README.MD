@@ -7,6 +7,11 @@ Basicamente a aplicação conta com 4 tools, dentro da 'database_tools'
  <br/> 3 - Execução da consulta sql, vale lembrar que caso a primeira etapa encontre problemas, é finalizado e o sql malicioso não é executado
  <br/> 4 - Formatação de dados, atualmente string, mas poderia ser graficos.
 <br/>
+## Oberservabilidade
+<br/> Foi utilizado o langfuse, https://langfuse.com/, em self-host através do docker-compose para prover todo monitoramento das tools e interações
+<br/>
+![Grafo](langfuse.png)
+<br/>
 ## Estruturas das pastas e como navegar:
 <br/>
 app/ <br/>
