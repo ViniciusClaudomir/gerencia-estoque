@@ -1,0 +1,6 @@
+{
+    "CONFIG_NOT_FOUND": "O arquivo de configurações {nam_file} não existe",
+    "CONFIG_GRAPH_NOT_FOUND": "A configuração do grafo {config_name} não existe",
+    "SQL_DETECTED":"Comandos sql foram detectados",
+    "GENERIC_ERROR": "Ocorreu um erro ao tentar processar a solicitação"
+}

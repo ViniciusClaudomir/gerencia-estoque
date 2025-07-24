@@ -1,0 +1,33 @@
+[tool.poetry]
+name = "api"
+version = "0.1.0"
+description = "Gerenciar estoque TI"
+license = "MIT"
+
+[tool.poetry.dependencies]
+python = "^3.12"
+fastapi = "^0.110.0"
+uvicorn = "^0.29.0"
+sqlalchemy = "^2.0.30"
+asyncpg = "^0.29.0"
+langfuse = "^2.14.0"
+pydantic = "^2.7.1"
+python-dotenv = "^1.0.1"
+langchain-openai = "^0.3.28"
+langchain = "^0.3.26"
+langgraph = "^0.5.3"
+langchain-community = "^0.3.27"
+langgraph-checkpoint-sqlite = "^2.0.10"
+psycopg2= "^2.9.10"
+psycopg2-binary = "^2.9.10"
+
+[tool.poetry.dev-dependencies]
+pytest = "^8.2.2"
+httpx = "^0.27.0"
+black = "^24.4.2"
+isort = "^5.13.2"
+mypy = "^1.10.0"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"

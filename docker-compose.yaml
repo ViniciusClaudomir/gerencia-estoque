@@ -1,0 +1,50 @@
+version: '3.8'
+
+services:
+  postgres:
+    image: postgres:16
+    container_name: postgres-db
+    environment:
+      POSTGRES_USER: gerencia-estoque
+      POSTGRES_PASSWORD: password
+      POSTGRES_DB: estoque
+      READ_ONLY: "false"
+      APP_MODE: write
+      ENABLE_WRITE: "true"
+    ports:
+      - "5432:5432"
+    volumes:
+      - ./migrations/app/postgree/V001_CREATE_INITIAL_SCHEMA.sql:/docker-entrypoint-initdb.d/init.sql
+      - ./migrations/langfuse/create_database.sh:/docker-entrypoint-initdb.d/init-extra-db.sh
+    restart: unless-stopped
+  
+  langfuse:
+    image: ghcr.io/langfuse/langfuse:2
+    container_name: langfuse
+    depends_on:
+      - postgres
+    environment:
+      DATABASE_URL: postgres://gerencia-estoque:password@postgres:5432/langfusedb
+      NEXTAUTH_SECRET: supersecretkey
+      NEXTAUTH_URL: http://localhost:3000
+      TELEMETRY_ENABLED: "false"
+      CLICKHOUSE_ENABLED: "false"
+      ENCRYPTION_KEY: 01d791133eee1d8d06249e8526f1ee83d62c47743c0e672e23211934e42b48c6
+      SALT: EuxN2AeKHmxOjYJUNxu7h69g5keIv9QSOTFj4NYvR18=
+    ports:
+      - "3000:3000"
+    restart: unless-stopped
+
+  app:
+    build: .
+    container_name: gerencia-estoque
+    depends_on:
+      - postgres
+      - langfuse
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - POETRY_VIRTUALENVS_CREATE=false
+    restart: unless-stopped
