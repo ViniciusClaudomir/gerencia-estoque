@@ -1,6 +1,14 @@
 ![Grafo](graph_financial.png)
 <br/>
 <br/>
+Basicamente a aplicação conta com 4 tools, dentro da 'database_tools'
+ 1 - Validação de sql
+ 2 - Coleta de esquema da base de dados postgreesql, porem foi usado sqlalchemy, caso queira alterar a base com mais facilidade
+ 3 - Execução da consulta sql, vale lembrar que caso a primeira etapa encontre problemas, é finalizado e o sql malicioso não é executado
+ 4 - Formatação de dados, atualmente string, mas poderia ser graficos.
+<br/>
+## Estruturas das pastas e como navegar:
+<br/>
 app/ <br/>
 ├── api/ <br/>
 │ ├── v1/ <br/>
